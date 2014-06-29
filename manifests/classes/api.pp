@@ -17,7 +17,7 @@ class oar::api ($version = "2.5", $snapshots = false) {
   }
 
   case $operatingsystem {
-    debian,ubuntu: {
+    debian,ubuntu,CentOS: {
       include "oar::api::${operatingsystem}"
     }
     default: {
@@ -27,10 +27,21 @@ class oar::api ($version = "2.5", $snapshots = false) {
 
 } # Class:: oar::api ($version = "2.5")
 
+
+class oar::api::CentOS inherits oar::api::base {
+
+}
+
 # Class:: oar::api::debian inherits oar::api::base
 #
 #
 class oar::api::debian inherits oar::api::base {
+
+  package {
+    "oar-api":
+      ensure  => installed,
+      require => Oar::Configure_repo["oar"];
+  }
 
 } # Class:: oar::api::debian inherits oar::api::base
 
@@ -47,11 +58,5 @@ class oar::api::ubuntu inherits oar::api::base {
 #
 #
 class oar::api::base inherits oar {
-
-  package {
-    "oar-api":
-      ensure  => installed,
-      require => Oar::Configure_repo["oar"];
-  }
 
 } # Class:: oar::api::base inherits oar

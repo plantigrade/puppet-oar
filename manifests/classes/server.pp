@@ -18,7 +18,7 @@ class oar::server ($version = "2.5", $db = "mysql", $snapshots = false) {
   }
 
   case $operatingsystem {
-    debian, ubuntu, centos: {
+    debian, ubuntu, CentOS: {
       include "oar::server::${operatingsystem}"
     }
     default: {
@@ -47,6 +47,11 @@ class oar::server::debian inherits oar::server::base {
   package { "taktuk": ensure => installed; }
 
 } # Class:: oar::server::debian inherits oar::server::base
+
+
+class oar::server::CentOS inherits oar::server::base {
+
+}
 
 # Class:: oar::server::base inherits oar
 #

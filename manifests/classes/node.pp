@@ -14,7 +14,7 @@ class oar::node ($version = "2.5", $snapshots = false) {
   }
 
   case $operatingsystem {
-    debian,ubuntu: {
+    debian,ubuntu,CentOS: {
       include "oar::node::${operatingsystem}"
     }
     default: {
@@ -40,6 +40,11 @@ class oar::node::debian inherits oar::node::base {
 
 
 } # Class:: oar::node::debian inherits oar::node::base
+
+class oar::node::CentOS inherits oar::node::base {
+
+
+}
 
 # Class:: oar::node::base inherits oar
 #

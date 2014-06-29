@@ -34,6 +34,22 @@ define oar::configure_repo($version, $snapshots) {
           notify      => Exec["OAR APT sources update"];
       }
     }
+    CentOS:{
+      file {
+        "/etc/yum.repos.d/oar.repo":
+          ensure  => file,
+          mode    => 644, owner => root, group => root,
+          content => template("oar/repos/centos/oar.repo.erb"),
+          notify  => Exec["OAR YUM makecache"];
+      }
+
+      exec {
+        "OAR YUM makecache":
+          path        => "/usr/bin:/usr/sbin:/bin",
+          command     => "yum makecache",
+          refreshonly => true;
+      }
+    }
     default: {
       err "${operatingsystem} not supported yet"
     }
