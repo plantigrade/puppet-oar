@@ -18,7 +18,7 @@ class oar::server ($version = "2.5", $db = "mysql", $snapshots = false) {
   }
 
   case $operatingsystem {
-    debian, ubuntu, CentOS: {
+    debian, ubuntu, centos: {
       include "oar::server::${operatingsystem}"
     }
     default: {
@@ -49,7 +49,7 @@ class oar::server::debian inherits oar::server::base {
 } # Class:: oar::server::debian inherits oar::server::base
 
 
-class oar::server::CentOS inherits oar::server::base {
+class oar::server::centos inherits oar::server::base {
 
 }
 

@@ -17,7 +17,7 @@ class oar::api ($version = "2.5", $snapshots = false) {
   }
 
   case $operatingsystem {
-    debian,ubuntu,CentOS: {
+    debian,ubuntu,centos: {
       include "oar::api::${operatingsystem}"
     }
     default: {
@@ -28,7 +28,7 @@ class oar::api ($version = "2.5", $snapshots = false) {
 } # Class:: oar::api ($version = "2.5")
 
 
-class oar::api::CentOS inherits oar::api::base {
+class oar::api::centos inherits oar::api::base {
 
 }
 

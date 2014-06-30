@@ -18,7 +18,7 @@ class oar::frontend ($version = "2.5", $db = "mysql", $snapshots = false) {
   }
 
   case $operatingsystem {
-    debian, ubuntu,CentOS: {
+    debian, ubuntu,centos: {
       include "oar::frontend::${operatingsystem}"
     }
     default: {
@@ -44,7 +44,7 @@ class oar::frontend::debian inherits oar::frontend::base {
 
 } # Class:: oar::frontend::debian inherits oar::frontend::base
 
-class oar::frontend::CentOS inherits oar::frontend::base {
+class oar::frontend::centos inherits oar::frontend::base {
 
 }
 
