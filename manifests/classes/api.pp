@@ -30,6 +30,12 @@ class oar::api ($version = "2.5", $snapshots = false) {
 
 class oar::api::centos inherits oar::api::base {
 
+  package {
+    "oar-restful-api":
+      ensure  => installed,
+      require => Oar::Configure_repo["oar"];
+  }
+
 }
 
 # Class:: oar::api::debian inherits oar::api::base
